@@ -10,12 +10,23 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - name: verify-version
-        uses: actions-cool/verify-files-modify@v1.1.0
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: YAML Lint
+        uses: ibiqlik/action-yamllint@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          forbid-files: "LICENSE"
-          forbid-paths: ".github/"
-          comment: |
-            This file is protected from modification.
-          close: true
+          file_or_dir: src/extension.yaml
+
+      - name: Check extension version
+        run: grep "version" src/extension.yaml
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install dtextcli
+        uses: ./.github/actions/dtextcli-setup
+
+      - name: Build extension using dtextcli
+        uses: ./.github/actions/build
