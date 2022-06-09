@@ -11,6 +11,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       
+      - name: Check signature
+        run: |
+          git verify-commit HEAD
+      
       - name: Package extension
         run: |
           # dtcli build --extension-directory . --target-directory /tmp/build
