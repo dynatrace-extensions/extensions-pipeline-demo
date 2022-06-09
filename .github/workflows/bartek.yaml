@@ -1,0 +1,29 @@
+name: bartek
+
+on:
+  push:
+  branches:
+    - dev
+
+jobs:
+  build:
+    name: build
+    runs-on: [self-hosted]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      
+      - name: Package extension
+        run: |
+          # dtcli build --extension-directory . --target-directory /tmp/build
+          echo "Now building the zip file from sources"
+
+      - name: Sign
+        run: |
+          echo "now connecting to signing service and signing the extension"
+      
+      - name: Deploy artifact
+        run: |
+          echo "Pushing to artifact storage (and gh releases?)"
+          
