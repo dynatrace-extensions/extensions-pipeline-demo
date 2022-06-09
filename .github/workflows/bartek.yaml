@@ -1,9 +1,6 @@
 name: bartek
 
-on:
-  push:
-  branches:
-    - dev
+on: [push]
 
 jobs:
   build:
