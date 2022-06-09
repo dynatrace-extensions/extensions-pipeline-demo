@@ -17,8 +17,7 @@ jobs:
       
       - name: Package extension
         run: |
-          # dtcli build --extension-directory . --target-directory /tmp/build
-          echo "Now building the zip file from sources"
+          dt ext build --extension-directory . --target-directory /tmp/build
 
       - name: Sign
         run: |
