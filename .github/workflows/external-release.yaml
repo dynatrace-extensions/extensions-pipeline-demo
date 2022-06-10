@@ -1,4 +1,10 @@
 name: release
+
+on:
+  push:
+    branches:
+      main
+
 jobs:
   release:
-    uses: dynatrace-extension/extensions-internal/.github/workflows/release.yaml
+    uses: dynatrace-extension/extensions-internal/.github/workflows/release.yaml@v1
