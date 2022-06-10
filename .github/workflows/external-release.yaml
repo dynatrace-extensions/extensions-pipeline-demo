@@ -1,0 +1,4 @@
+name: release
+jobs:
+  release:
+    uses: dynatrace-extension/extensions-internal/.github/workflows/release.yaml
