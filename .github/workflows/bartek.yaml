@@ -18,7 +18,7 @@ jobs:
       - name: Package extension
         run: |
           #dt ext build --extension-directory . --target-directory /tmp/build
-          zip extension src
+          zip extension src/*
 
       - name: Sign
         run: |
@@ -28,6 +28,12 @@ jobs:
       - name: Deploy artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: "extension.zip"
+          name: "extension signature"
+          path: "extension.zip.sig"
+
+      - name: Deploy artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: "extension package"
           path: "extension.zip"
           
