@@ -23,7 +23,7 @@ jobs:
       - name: Sign
         run: |
           echo "now connecting to signing service and signing the extension"
-          java -jar ~/client-signing.jar -a SIGNATURE -d SHA1 --download . -tp bartek -tv 0.0.1 -t -h sign-service-dev.apps.lab.dynatrace.org -u x -p x -t
+          java -jar ~/client-signing.jar -a SIGNATURE -d SHA1 --download . -tp bartek -tv 0.0.1 -t -h sign-service-dev.apps.lab.dynatrace.org -u x -p x extension.zip
       
       - name: Package extension bundle (zip+sig+tsr)
         run: |
